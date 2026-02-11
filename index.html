@@ -1,372 +1,312 @@
+```html
 <!DOCTYPE html>
 <html lang="es-AR">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <title>Tiempo de Amor, Deco | Deco artesanal</title>
-  <meta name="description" content="Piezas únicas, artesanales y maravillosas. Proveeduría chic. Consultas por WhatsApp." />
+  <title>Tiempo de Amor, Deco | Catálogo y pedidos</title>
+  <meta name="description" content="Deco artesanal lista para tu casa o para regalar. Mirá el catálogo, elegí y pedí por WhatsApp." />
 
   <!-- Open Graph -->
   <meta property="og:title" content="Tiempo de Amor, Deco" />
-  <meta property="og:description" content="Piezas únicas, artesanales y maravillosas. Consultas por WhatsApp." />
+  <meta property="og:description" content="Deco artesanal lista para tu casa o para regalar. Mirá el catálogo, elegí y pedí por WhatsApp." />
   <meta property="og:type" content="website" />
   <meta property="og:image" content="https://iili.io/fyjIFiF.png" />
   <meta property="og:locale" content="es_AR" />
 
-  <meta name="theme-color" content="#f6efe6" />
+  <meta name="theme-color" content="#fbf6ef" />
 
   <style>
-    /* IMPORTANTE:
-       - Subí el archivo de fuente "Adorable.otf" en la MISMA carpeta que este index.html
-       - Si lo querés por URL, reemplazá src: url("Adorable.otf") por tu link directo.
-    */
-    @font-face {
-      font-family: "Adorable";
-      src: url("Adorable.otf") format("opentype");
-      font-weight: 400;
-      font-style: normal;
-      font-display: swap;
+    @font-face{
+      font-family:"Adorable";
+      src:url("Adorable.otf") format("opentype");
+      font-weight:400;
+      font-style:normal;
+      font-display:swap;
     }
 
     :root{
-      --bg: #fbf6ef;
-      --cream: #fff7ee;
-      --card: rgba(255, 255, 255, 0.78);
-      --card2: rgba(255, 255, 255, 0.68);
-      --ink: #2f2a24;
-      --muted: #6b5f55;
-      --line: rgba(47,42,36,.12);
-      --shadow: 0 14px 34px rgba(47,42,36,.10);
-      --radius: 20px;
-      --radius2: 16px;
-      --max: 1120px;
+      --bg:#fbf6ef;
+      --ink:#2f2a24;
+      --muted:#6b5f55;
+      --line:rgba(47,42,36,.12);
+      --shadow:0 14px 34px rgba(47,42,36,.10);
+      --shadow2:0 10px 22px rgba(47,42,36,.08);
+      --radius:20px;
+      --radius2:16px;
+      --max:1120px;
+
+      --card:rgba(255,255,255,.74);
+      --card2:rgba(255,255,255,.66);
+
+      --cream1:#fff7ee;
+      --cream2:#fff1e3;
+      --accent:#d9b8a7;
     }
 
-    *{ box-sizing: border-box; }
-    html, body { height: 100%; }
+    *{box-sizing:border-box;}
+    html,body{height:100%;}
     body{
-      margin: 0;
-      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Inter, Arial, "Helvetica Neue", sans-serif;
-      color: var(--ink);
-      background: var(--bg);
-      overflow-x: hidden;
+      margin:0;
+      font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,"Helvetica Neue",sans-serif;
+      color:var(--ink);
+      background:var(--bg);
+      overflow-x:hidden;
     }
 
-    /* Overlay de fondo (sin opacidad en la imagen). La opacidad va en las cards. */
+    /* Overlay SIN opacidad (no usamos opacity).
+       Le bajamos el contraste con filtro (sin taparlo) para que quede suave. */
     body::before{
       content:"";
-      position: fixed;
-      inset: 0;
-      background-image: url("https://iili.io/fyj1ULG.jpg");
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
-      z-index: -2;
-      transform: translateZ(0);
-    }
-    /* Velo suave para que el overlay no queme, pero SIN tocar la imagen (sigue "sin opacidad") */
-    body::after{
-      content:"";
-      position: fixed;
-      inset: 0;
-      background: linear-gradient(180deg, rgba(251,246,239,.90) 0%, rgba(251,246,239,.70) 45%, rgba(251,246,239,.88) 100%);
-      z-index: -1;
-      pointer-events: none;
+      position:fixed;
+      inset:0;
+      background-image:url("https://iili.io/fyj1ULG.jpg");
+      background-size:cover;
+      background-position:center;
+      background-repeat:no-repeat;
+      z-index:-1;
+      transform:translateZ(0);
+      filter:brightness(1.08) contrast(.90) saturate(.92);
     }
 
-    a{ color: inherit; text-decoration: none; }
-    .wrap{
-      width: min(var(--max), calc(100% - 32px));
-      margin: 0 auto;
-    }
+    a{color:inherit;text-decoration:none;}
+    .wrap{width:min(var(--max),calc(100% - 32px));margin:0 auto;}
 
     header{
-      position: sticky;
-      top: 0;
-      z-index: 10;
-      backdrop-filter: blur(10px);
-      background: rgba(251,246,239,.62);
-      border-bottom: 1px solid var(--line);
+      position:sticky;top:0;z-index:10;
+      backdrop-filter:blur(10px);
+      background:rgba(251,246,239,.62);
+      border-bottom:1px solid var(--line);
     }
     .head{
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 12px;
-      padding: 14px 0;
+      display:flex;align-items:center;justify-content:space-between;gap:12px;
+      padding:14px 0;
     }
 
-    .brand{
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      min-width: 0;
-    }
+    .brand{display:flex;align-items:center;gap:12px;min-width:0;}
     .brandMark{
-      width: 44px;
-      height: 44px;
-      border-radius: 14px;
-      background: radial-gradient(circle at 30% 25%, #fff 0%, #ffe9d6 35%, #f7dccf 70%, #f1d5c6 100%);
-      border: 1px solid rgba(47,42,36,.10);
-      box-shadow: 0 10px 18px rgba(47,42,36,.10);
-      flex: 0 0 auto;
+      width:44px;height:44px;border-radius:14px;flex:0 0 auto;
+      background:radial-gradient(circle at 30% 25%,#fff 0%,#ffe9d6 35%,#f7dccf 70%,#f1d5c6 100%);
+      border:1px solid rgba(47,42,36,.10);
+      box-shadow:0 10px 18px rgba(47,42,36,.10);
     }
-    .brandText{
-      display: flex;
-      flex-direction: column;
-      line-height: 1.05;
-      min-width: 0;
-    }
+    .brandText{display:flex;flex-direction:column;line-height:1.05;min-width:0;}
     .brandTitle{
-      font-family: "Adorable", ui-serif, Georgia, serif;
-      font-size: 22px;
-      letter-spacing: .2px;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
+      font-family:"Adorable",ui-serif,Georgia,serif;
+      font-size:22px;letter-spacing:.2px;
+      white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
     }
     .brandSub{
-      font-size: 12.5px;
-      color: var(--muted);
-      margin-top: 2px;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
+      font-size:12.5px;color:var(--muted);margin-top:2px;
+      white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
     }
 
-    .nav{
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      flex-wrap: wrap;
-      justify-content: flex-end;
-    }
+    .nav{display:flex;align-items:center;gap:10px;flex-wrap:wrap;justify-content:flex-end;}
 
     .btn{
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      height: 42px;
-      padding: 0 14px;
-      border-radius: 14px;
-      border: 1px solid rgba(47,42,36,.12);
-      background: rgba(255,255,255,.72);
-      box-shadow: 0 10px 20px rgba(47,42,36,.08);
-      color: var(--ink);
-      font-weight: 600;
-      font-size: 14px;
-      transition: transform .12s ease, box-shadow .12s ease, background .12s ease;
-      cursor: pointer;
-      user-select: none;
-      white-space: nowrap;
+      display:inline-flex;align-items:center;justify-content:center;gap:10px;
+      height:42px;padding:0 14px;border-radius:14px;
+      border:1px solid rgba(47,42,36,.12);
+      background:rgba(255,255,255,.72);
+      box-shadow:0 10px 20px rgba(47,42,36,.08);
+      color:var(--ink);font-weight:700;font-size:14px;
+      transition:transform .12s ease, box-shadow .12s ease, background .12s ease;
+      cursor:pointer;user-select:none;white-space:nowrap;
     }
-    .btn:hover{
-      transform: translateY(-1px);
-      box-shadow: 0 14px 26px rgba(47,42,36,.11);
-      background: rgba(255,255,255,.80);
-    }
+    .btn:hover{transform:translateY(-1px);box-shadow:0 14px 26px rgba(47,42,36,.11);background:rgba(255,255,255,.82);}
     .btn.primary{
-      background: linear-gradient(180deg, rgba(255,255,255,.82), rgba(255,245,234,.78));
-      border-color: rgba(47,42,36,.14);
+      background:linear-gradient(180deg,rgba(255,255,255,.86),rgba(255,241,227,.78));
+      border-color:rgba(47,42,36,.14);
     }
+    .btn.ghost{background:rgba(255,255,255,.58);}
 
-    main{ padding: 26px 0 70px; }
+    main{padding:26px 0 80px;}
 
     .hero{
-      display: grid;
-      grid-template-columns: 1.15fr .85fr;
-      gap: 18px;
-      align-items: stretch;
-      margin-top: 8px;
+      display:grid;grid-template-columns:1.1fr .9fr;gap:20px;align-items:stretch;margin-top:8px;
     }
 
     .card{
-      border-radius: var(--radius);
-      background: var(--card);
-      border: 1px solid rgba(47,42,36,.12);
-      box-shadow: var(--shadow);
+      border-radius:var(--radius);
+      background:var(--card);
+      border:1px solid rgba(47,42,36,.12);
+      box-shadow:var(--shadow);
     }
 
-    .heroLeft{
-      padding: 26px;
-      position: relative;
-      overflow: hidden;
-    }
-
+    .heroLeft{padding:28px;position:relative;overflow:hidden;}
     .tag{
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 7px 12px;
-      border-radius: 999px;
-      background: rgba(255,255,255,.70);
-      border: 1px solid rgba(47,42,36,.10);
-      font-size: 12.5px;
-      color: var(--muted);
-      margin-bottom: 14px;
+      display:inline-flex;align-items:center;gap:8px;
+      padding:7px 12px;border-radius:999px;
+      background:rgba(255,255,255,.70);
+      border:1px solid rgba(47,42,36,.10);
+      font-size:12.5px;color:var(--muted);
+      margin-bottom:14px;
     }
 
     h1{
-      margin: 0;
-      font-family: "Adorable", ui-serif, Georgia, serif;
-      font-size: 46px;
-      letter-spacing: .3px;
-      line-height: 1.02;
-    }
-    .lead{
-      margin: 12px 0 0;
-      color: var(--muted);
-      font-size: 16.5px;
-      line-height: 1.5;
-      max-width: 54ch;
+      margin:0;
+      font-family:"Adorable",ui-serif,Georgia,serif;
+      font-size:48px;letter-spacing:.3px;line-height:1.02;
     }
 
-    .ctaRow{
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
-      margin-top: 18px;
+    .lead{
+      margin:12px 0 0;
+      color:var(--muted);
+      font-size:16.5px;
+      line-height:1.55;
+      max-width:62ch;
     }
+
+    .benefits{
+      display:grid;
+      grid-template-columns:repeat(3, 1fr);
+      gap:14px;
+      margin-top:18px;
+    }
+    .benefit{
+      border-radius:18px;
+      border:1px solid rgba(47,42,36,.10);
+      background:rgba(255,255,255,.66);
+      box-shadow:var(--shadow2);
+      padding:14px;
+      min-height:84px;
+    }
+    .benefit .t{font-weight:800;font-size:14px;margin-bottom:6px;}
+    .benefit .d{font-size:13px;color:var(--muted);line-height:1.35;}
+
+    .ctaRow{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px;}
 
     .heroRight{
-      padding: 18px;
-      display: grid;
-      gap: 12px;
-      align-content: start;
-      background: var(--card2);
+      padding:18px;
+      display:grid;gap:14px;
+      align-content:start;
+      background:var(--card2);
     }
 
     .infoItem{
-      padding: 14px 14px;
-      border-radius: 16px;
-      border: 1px solid rgba(47,42,36,.10);
-      background: rgba(255,255,255,.70);
+      padding:14px;border-radius:18px;
+      border:1px solid rgba(47,42,36,.10);
+      background:rgba(255,255,255,.70);
+      box-shadow:var(--shadow2);
     }
     .infoLabel{
-      font-size: 12px;
-      color: var(--muted);
-      letter-spacing: .2px;
-      margin-bottom: 6px;
-      text-transform: uppercase;
+      font-size:12px;color:var(--muted);
+      letter-spacing:.2px;margin-bottom:6px;text-transform:uppercase;
     }
-    .infoValue{
-      font-size: 15px;
-      line-height: 1.35;
-      color: var(--ink);
-      font-weight: 600;
-    }
+    .infoValue{font-size:15px;line-height:1.35;color:var(--ink);font-weight:800;}
+    .infoValue a{text-decoration:underline;text-underline-offset:3px;}
 
-    .section{
-      margin-top: 22px;
-    }
-
+    .section{margin-top:26px;}
     .sectionHead{
-      display: flex;
-      align-items: flex-end;
-      justify-content: space-between;
-      gap: 12px;
-      margin-bottom: 12px;
+      display:flex;align-items:flex-end;justify-content:space-between;gap:12px;margin-bottom:12px;
     }
-    .sectionTitle{
-      font-size: 20px;
-      margin: 0;
-      letter-spacing: .2px;
-    }
-    .sectionNote{
-      font-size: 13px;
-      color: var(--muted);
-      margin: 0;
-    }
+    .sectionTitle{font-size:20px;margin:0;letter-spacing:.2px;}
+    .sectionNote{font-size:13px;color:var(--muted);margin:0;max-width:70ch;}
 
-    .galleryCard{
-      padding: 18px;
-    }
+    .catalogCard{padding:18px;}
 
+    /* MAS aire entre fotos/cards para que se vea el overlay */
     .grid{
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 14px;
+      display:grid;
+      grid-template-columns:repeat(3, 1fr);
+      gap:22px; /* aire */
+    }
+
+    .item{
+      border-radius:22px;
+      border:1px solid rgba(47,42,36,.12);
+      background:rgba(255,255,255,.62);
+      box-shadow:var(--shadow2);
+      overflow:hidden;
     }
 
     .ph{
-      border-radius: 18px;
-      overflow: hidden;
-      border: 1px solid rgba(47,42,36,.12);
-      background: rgba(255,255,255,.55);
-      box-shadow: 0 10px 20px rgba(47,42,36,.07);
-      aspect-ratio: 1 / 1;
+      border-radius:0;
+      overflow:hidden;
+      background:rgba(255,255,255,.55);
+      aspect-ratio:1 / 1;
     }
-    .ph img{
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-      transform: scale(1.01);
+    .ph img{width:100%;height:100%;object-fit:cover;display:block;transform:scale(1.01);}
+
+    .itemBody{
+      padding:14px 14px 16px;
+      display:grid;
+      gap:10px;
+    }
+    .itemTop{display:flex;align-items:flex-start;justify-content:space-between;gap:10px;}
+    .itemTitle{font-weight:900;font-size:14.5px;line-height:1.2;margin:0;}
+    .badge{
+      flex:0 0 auto;
+      font-size:12px;
+      font-weight:900;
+      padding:6px 10px;
+      border-radius:999px;
+      border:1px solid rgba(47,42,36,.12);
+      background:linear-gradient(180deg,rgba(255,255,255,.86),rgba(255,241,227,.70));
+      color:rgba(47,42,36,.86);
+      white-space:nowrap;
+    }
+    .itemDesc{
+      margin:0;
+      color:var(--muted);
+      font-size:13px;
+      line-height:1.35;
+    }
+    .itemMeta{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
+      padding-top:4px;
+    }
+    .price{
+      font-weight:900;
+      font-size:14px;
+      color:rgba(47,42,36,.92);
+    }
+    .btnMini{
+      height:38px;
+      padding:0 12px;
+      border-radius:12px;
+      font-size:13px;
+      font-weight:900;
+      box-shadow:none;
+      background:rgba(255,255,255,.70);
+    }
+    .btnMini.primary{
+      background:linear-gradient(180deg,rgba(255,255,255,.88),rgba(255,241,227,.78));
     }
 
-    .moreRow{
-      display: flex;
-      justify-content: center;
-      margin-top: 14px;
-    }
-    .btnMore{
-      height: 44px;
-      padding: 0 18px;
-      border-radius: 999px;
-    }
+    .moreRow{display:flex;justify-content:center;margin-top:18px;}
+    .btnMore{height:44px;padding:0 18px;border-radius:999px;}
 
-    .divider{
-      height: 1px;
-      background: rgba(47,42,36,.12);
-      margin: 18px 0;
-      border-radius: 99px;
-    }
-
-    footer{
-      padding: 20px 0 34px;
-      color: rgba(47,42,36,.75);
-    }
+    footer{padding:20px 0 34px;color:rgba(47,42,36,.75);}
     .footCard{
-      padding: 16px 18px;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      align-items: center;
-      justify-content: space-between;
-      border-radius: var(--radius);
-      background: rgba(255,255,255,.60);
-      border: 1px solid rgba(47,42,36,.12);
-      box-shadow: 0 10px 20px rgba(47,42,36,.07);
+      padding:16px 18px;
+      display:flex;flex-wrap:wrap;gap:10px;
+      align-items:center;justify-content:space-between;
+      border-radius:var(--radius);
+      background:rgba(255,255,255,.60);
+      border:1px solid rgba(47,42,36,.12);
+      box-shadow:0 10px 20px rgba(47,42,36,.07);
     }
-    .footLeft{
-      font-size: 13.5px;
-    }
-    .footRight{
-      font-size: 13.5px;
-    }
-    .footRight a{
-      text-decoration: underline;
-      text-underline-offset: 3px;
-    }
+    .footRight a{text-decoration:underline;text-underline-offset:3px;}
 
     /* Responsive */
-    @media (max-width: 980px){
-      .hero{ grid-template-columns: 1fr; }
-      h1{ font-size: 40px; }
+    @media (max-width: 1020px){
+      .hero{grid-template-columns:1fr;}
+      h1{font-size:42px;}
+      .benefits{grid-template-columns:1fr;gap:12px;}
     }
-    @media (max-width: 740px){
-      .grid{ grid-template-columns: repeat(2, 1fr); }
-      h1{ font-size: 36px; }
-      .head{ padding: 12px 0; }
-      .btn{ height: 40px; font-size: 13.5px; }
+    @media (max-width: 820px){
+      .grid{grid-template-columns:repeat(2, 1fr);gap:18px;}
     }
-    @media (max-width: 480px){
-      .wrap{ width: min(var(--max), calc(100% - 22px)); }
-      .grid{ grid-template-columns: 1fr; }
-      h1{ font-size: 34px; }
-      .brandTitle{ font-size: 20px; }
+    @media (max-width: 520px){
+      .wrap{width:min(var(--max),calc(100% - 22px));}
+      h1{font-size:36px;}
+      .brandTitle{font-size:20px;}
+      .grid{grid-template-columns:1fr;gap:16px;}
     }
   </style>
 </head>
@@ -378,14 +318,13 @@
         <div class="brandMark" aria-hidden="true"></div>
         <div class="brandText">
           <div class="brandTitle">Tiempo de Amor, Deco</div>
-          <div class="brandSub">Piezas únicas, artesanales y maravillosas</div>
+          <div class="brandSub">Catálogo de deco artesanal para tu casa y regalos</div>
         </div>
       </div>
 
       <nav class="nav">
-        <a class="btn" href="#galeria">Galería</a>
-        <a class="btn primary" href="https://wa.me/542346596684" target="_blank" rel="noopener">WhatsApp</a>
-        <!-- Si querés el IG directo, reemplazá el href por el link del perfil -->
+        <a class="btn ghost" href="#catalogo">Catálogo</a>
+        <a class="btn primary" href="https://wa.me/542346596684" target="_blank" rel="noopener">Pedir por WhatsApp</a>
         <a class="btn" href="#" onclick="alert('Pega el link de Instagram en el href cuando lo tengas.'); return false;">Instagram</a>
       </nav>
     </div>
@@ -394,48 +333,66 @@
   <main class="wrap">
     <section class="hero">
       <div class="card heroLeft">
-        <div class="tag">Deco artesanal · Proveeduría chic</div>
-        <h1>Tiempo de Amor, Deco</h1>
+        <div class="tag">Venta directa · Consultas por WhatsApp · Entregas a coordinar</div>
+
+        <h1>Deco que enamora, lista para tu casa</h1>
+
         <p class="lead">
-          Cada pieza está hecha con dedicación, detalle y estilo.
-          Si querés consultar por un producto o pedir presupuesto, escribime por WhatsApp.
+          Acá podés ver el catálogo con los productos reales (los de las fotos).
+          Elegís el que te gusta, me mandás el mensaje y te confirmo precio, stock y entrega.
+          Ideal para decorar, regalar o sumar un detalle lindo en cualquier espacio.
         </p>
 
-        <div class="ctaRow">
-          <a class="btn primary" href="#galeria">Ver galería</a>
-          <a class="btn" href="https://wa.me/542346596684" target="_blank" rel="noopener">Consultar por WhatsApp</a>
+        <div class="benefits" role="list">
+          <div class="benefit" role="listitem">
+            <div class="t">Elegí y pedí</div>
+            <div class="d">Tocás "Consultar" en el producto y te abre WhatsApp con el mensaje listo.</div>
+          </div>
+          <div class="benefit" role="listitem">
+            <div class="t">Artesanal</div>
+            <div class="d">Piezas con detalle, terminación prolija y estilo cálido.</div>
+          </div>
+          <div class="benefit" role="listitem">
+            <div class="t">Regalos</div>
+            <div class="d">Opciones para sorprender: deco, organizadores, detalles y más.</div>
+          </div>
         </div>
 
-        <div class="divider"></div>
-
-        <p class="sectionNote" style="margin:0;">
-          Tip: La galería carga de a 3 y con “Ver más” vas mostrando el resto (más liviano y rápido).
-        </p>
+        <div class="ctaRow">
+          <a class="btn primary" href="#catalogo">Ver catálogo</a>
+          <a class="btn" href="https://wa.me/542346596684" target="_blank" rel="noopener">Quiero consultar</a>
+        </div>
       </div>
 
       <aside class="card heroRight">
         <div class="infoItem">
-          <div class="infoLabel">Atención</div>
-          <div class="infoValue">Online · Consultas por WhatsApp</div>
+          <div class="infoLabel">Cómo comprar</div>
+          <div class="infoValue">1) Mirás el catálogo  2) Tocás "Consultar"  3) Coordinamos</div>
         </div>
         <div class="infoItem">
-          <div class="infoLabel">Estilo</div>
-          <div class="infoValue">Pasteles, cremitas, aireado (overlay visible)</div>
+          <div class="infoLabel">Respuesta</div>
+          <div class="infoValue">Te confirmo precio, medidas, stock y envío/entrega</div>
         </div>
         <div class="infoItem">
-          <div class="infoLabel">Contacto</div>
-          <div class="infoValue"><a href="https://wa.me/542346596684" target="_blank" rel="noopener" style="text-decoration: underline; text-underline-offset: 3px;">wa.me/542346596684</a></div>
+          <div class="infoLabel">WhatsApp</div>
+          <div class="infoValue"><a href="https://wa.me/542346596684" target="_blank" rel="noopener">wa.me/542346596684</a></div>
+        </div>
+        <div class="infoItem">
+          <div class="infoLabel">Tip</div>
+          <div class="infoValue">Si querés, armamos combo de productos y te lo cotizo</div>
         </div>
       </aside>
     </section>
 
-    <section id="galeria" class="section">
+    <section id="catalogo" class="section">
       <div class="sectionHead">
-        <h2 class="sectionTitle">Galería</h2>
-        <p class="sectionNote">Se muestran de a 3 · tocá “Ver más” para cargar el resto</p>
+        <h2 class="sectionTitle">Catálogo</h2>
+        <p class="sectionNote">
+          Se muestran de a 3 para que cargue rápido. Tocá "Ver más" para seguir viendo. Cada producto tiene descripción y botón de consulta.
+        </p>
       </div>
 
-      <div class="card galleryCard">
+      <div class="card catalogCard">
         <div id="grid" class="grid" aria-live="polite"></div>
         <div class="moreRow">
           <button id="btnMore" class="btn btnMore" type="button">Ver más</button>
@@ -454,56 +411,111 @@
   </footer>
 
   <script>
-    // Galería: muestra de a 3, con botón "Ver más" (carga progresiva)
-    const IMAGES = [
-      "https://iili.io/fyjIFiF.png",
-      "https://iili.io/fyjIqla.png",
-      "https://iili.io/fyjIfKg.png",
-      "https://iili.io/fyjIBUJ.png",
-      "https://iili.io/fyjIxNp.png",
-      "https://iili.io/fyjIzDN.png",
-      "https://iili.io/fyjITxI.png",
-      "https://iili.io/fyjIuVt.png",
-      "https://iili.io/fyjI5fn.png",
-      "https://iili.io/fyjI7ls.png",
-      "https://iili.io/fyjIYUG.png",
-      "https://iili.io/fyjIcJf.png",
-      "https://iili.io/fyjI0Ol.png",
-      "https://iili.io/fyjI1b2.png",
-      "https://iili.io/fyjIGxS.png"
-    ];
-
+    const WA_NUMBER = "542346596684";
     const PER_LOAD = 3;
     let shown = 0;
+
+    /* IMPORTANTE:
+       Como no tengo el nombre real de cada producto, te lo dejé como "Producto 01, 02..."
+       y con descripciones vendedoras editables. Si querés, reemplazás title/desc/precio/badge por lo real.
+    */
+    const CATALOG = [
+      { src:"https://iili.io/fyjIFiF.png", title:"Producto 01", badge:"Nuevo", price:"Consultar precio", desc:"Deco artesanal con terminación prolija, ideal para sumar calidez en tu espacio o regalar." },
+      { src:"https://iili.io/fyjIqla.png", title:"Producto 02", badge:"Artesanal", price:"Consultar precio", desc:"Pieza decorativa lista para usar. Te paso medidas, colores disponibles y stock por WhatsApp." },
+      { src:"https://iili.io/fyjIfKg.png", title:"Producto 03", badge:"Elegí el tuyo", price:"Consultar precio", desc:"Detalle lindo para living, dormitorio o escritorio. Consultame y coordinamos entrega." },
+      { src:"https://iili.io/fyjIBUJ.png", title:"Producto 04", badge:"Regalo", price:"Consultar precio", desc:"Ideal para regalo. Si querés lo preparo para entregar y te digo opciones de presentación." },
+      { src:"https://iili.io/fyjIxNp.png", title:"Producto 05", badge:"Deco", price:"Consultar precio", desc:"Sumá estilo sin complicarte. Pieza artesanal, prolija y con onda. Consultá por variantes." },
+      { src:"https://iili.io/fyjIzDN.png", title:"Producto 06", badge:"Disponible", price:"Consultar precio", desc:"Producto real (foto). Te confirmo stock, precio y tiempo de entrega por WhatsApp." },
+      { src:"https://iili.io/fyjITxI.png", title:"Producto 07", badge:"Combo", price:"Consultar precio", desc:"Se puede armar combo con otros productos. Decime qué te gustó y te cotizo." },
+      { src:"https://iili.io/fyjIuVt.png", title:"Producto 08", badge:"Hecho a mano", price:"Consultar precio", desc:"Hecho a mano con detalle. Ideal para sumar un toque delicado y cálido a tu casa." },
+      { src:"https://iili.io/fyjI5fn.png", title:"Producto 09", badge:"Top", price:"Consultar precio", desc:"De los más elegidos. Consultame por medidas, colores y disponibilidad." },
+      { src:"https://iili.io/fyjI7ls.png", title:"Producto 10", badge:"Deco chic", price:"Consultar precio", desc:"Un detalle que cambia el ambiente. Te paso toda la info y formas de entrega." },
+      { src:"https://iili.io/fyjIYUG.png", title:"Producto 11", badge:"Nuevo", price:"Consultar precio", desc:"Producto artesanal listo para sumar al hogar o regalar. Consultá y te respondo rápido." },
+      { src:"https://iili.io/fyjIcJf.png", title:"Producto 12", badge:"Disponible", price:"Consultar precio", desc:"Foto real del producto. Escribime y te confirmo precio, stock y entrega." },
+      { src:"https://iili.io/fyjI0Ol.png", title:"Producto 13", badge:"Artesanal", price:"Consultar precio", desc:"Pieza decorativa con estilo suave. Ideal para combinar con cualquier ambiente." },
+      { src:"https://iili.io/fyjI1b2.png", title:"Producto 14", badge:"Regalo", price:"Consultar precio", desc:"Perfecto para regalar. Si querés, te armo opciones para llevar y presentar." },
+      { src:"https://iili.io/fyjIGxS.png", title:"Producto 15", badge:"Deco", price:"Consultar precio", desc:"Sumá ese toque final a tu rincón. Consultame por disponibilidad y envío/entrega." }
+    ];
 
     const grid = document.getElementById("grid");
     const btnMore = document.getElementById("btnMore");
     document.getElementById("y").textContent = new Date().getFullYear();
 
+    function waLinkFor(title){
+      const txt = "Hola! Me interesa " + title + " (lo vi en el catálogo de Tiempo de Amor, Deco). Me pasás precio y disponibilidad?";
+      return "https://wa.me/" + WA_NUMBER + "?text=" + encodeURIComponent(txt);
+    }
+
+    function makeItem(p, idx){
+      const el = document.createElement("article");
+      el.className = "item";
+
+      const ph = document.createElement("div");
+      ph.className = "ph";
+      const img = document.createElement("img");
+      img.loading = "lazy";
+      img.alt = p.title;
+      img.src = p.src;
+      ph.appendChild(img);
+
+      const body = document.createElement("div");
+      body.className = "itemBody";
+
+      const top = document.createElement("div");
+      top.className = "itemTop";
+
+      const h = document.createElement("h3");
+      h.className = "itemTitle";
+      h.textContent = p.title;
+
+      const b = document.createElement("div");
+      b.className = "badge";
+      b.textContent = p.badge || "Catálogo";
+
+      top.appendChild(h);
+      top.appendChild(b);
+
+      const d = document.createElement("p");
+      d.className = "itemDesc";
+      d.textContent = p.desc;
+
+      const meta = document.createElement("div");
+      meta.className = "itemMeta";
+
+      const price = document.createElement("div");
+      price.className = "price";
+      price.textContent = p.price || "Consultar precio";
+
+      const cta = document.createElement("a");
+      cta.className = "btn btnMini primary";
+      cta.href = waLinkFor(p.title);
+      cta.target = "_blank";
+      cta.rel = "noopener";
+      cta.textContent = "Consultar";
+
+      meta.appendChild(price);
+      meta.appendChild(cta);
+
+      body.appendChild(top);
+      body.appendChild(d);
+      body.appendChild(meta);
+
+      el.appendChild(ph);
+      el.appendChild(body);
+
+      return el;
+    }
+
     function renderNext(){
-      const next = IMAGES.slice(shown, shown + PER_LOAD);
-      next.forEach((src, idx) => {
-        const wrap = document.createElement("div");
-        wrap.className = "ph";
-        const img = document.createElement("img");
-        img.loading = "lazy";
-        img.alt = "Foto " + (shown + idx + 1);
-        img.src = src;
-        wrap.appendChild(img);
-        grid.appendChild(wrap);
-      });
-
+      const next = CATALOG.slice(shown, shown + PER_LOAD);
+      next.forEach((p, i) => grid.appendChild(makeItem(p, shown + i)));
       shown += next.length;
-
-      if (shown >= IMAGES.length){
-        btnMore.style.display = "none";
-      }
+      if (shown >= CATALOG.length) btnMore.style.display = "none";
     }
 
     btnMore.addEventListener("click", renderNext);
-
-    // Inicial
     renderNext();
   </script>
 </body>
 </html>
+```
