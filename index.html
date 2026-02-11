@@ -1,4 +1,4 @@
-
+```html
 <!DOCTYPE html>
 <html lang="es-AR">
 <head>
@@ -34,15 +34,10 @@
       --shadow:0 14px 34px rgba(47,42,36,.10);
       --shadow2:0 10px 22px rgba(47,42,36,.08);
       --radius:20px;
-      --radius2:16px;
       --max:1120px;
 
       --card:rgba(255,255,255,.74);
       --card2:rgba(255,255,255,.66);
-
-      --cream1:#fff7ee;
-      --cream2:#fff1e3;
-      --accent:#d9b8a7;
     }
 
     *{box-sizing:border-box;}
@@ -55,8 +50,7 @@
       overflow-x:hidden;
     }
 
-    /* Overlay SIN opacidad (no usamos opacity).
-       Le bajamos el contraste con filtro (sin taparlo) para que quede suave. */
+    /* Overlay SIN opacidad, suavizado por filtro (sin taparlo) */
     body::before{
       content:"";
       position:fixed;
@@ -73,15 +67,23 @@
     a{color:inherit;text-decoration:none;}
     .wrap{width:min(var(--max),calc(100% - 32px));margin:0 auto;}
 
+    /* HEADER: fijo + safe area iOS + mas alto para que no corte texto ni botones */
     header{
-      position:sticky;top:0;z-index:10;
+      position:sticky;
+      top:0;
+      z-index:100;
       backdrop-filter:blur(10px);
-      background:rgba(251,246,239,.62);
+      background:rgba(251,246,239,.72);
       border-bottom:1px solid var(--line);
+      padding-top: env(safe-area-inset-top);
     }
     .head{
-      display:flex;align-items:center;justify-content:space-between;gap:12px;
-      padding:14px 0;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:14px;
+      padding:14px 0 12px;
+      min-height:64px;
     }
 
     .brand{display:flex;align-items:center;gap:12px;min-width:0;}
@@ -91,28 +93,69 @@
       border:1px solid rgba(47,42,36,.10);
       box-shadow:0 10px 18px rgba(47,42,36,.10);
     }
-    .brandText{display:flex;flex-direction:column;line-height:1.05;min-width:0;}
+
+    /* Caja suave detras del texto del header (mejora lectura en mobile) */
+    .brandText{
+      display:flex;
+      flex-direction:column;
+      gap:4px;
+      line-height:1.15;
+      min-width:0;
+      padding:8px 10px;
+      border-radius:14px;
+      background:rgba(255,255,255,.62);
+      border:1px solid rgba(47,42,36,.10);
+      box-shadow:0 8px 18px rgba(47,42,36,.08);
+    }
+
     .brandTitle{
       font-family:"Adorable",ui-serif,Georgia,serif;
-      font-size:22px;letter-spacing:.2px;
-      white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+      font-size:22px;
+      letter-spacing:.2px;
+      line-height:1.2;          /* evita que se corte arriba */
+      padding-top:1px;          /* micro-ajuste para ascenders */
+      text-shadow:0 1px 0 rgba(255,255,255,.55);
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
     }
     .brandSub{
-      font-size:12.5px;color:var(--muted);margin-top:2px;
-      white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+      font-size:12.5px;
+      color:var(--muted);
+      line-height:1.25;
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
     }
 
-    .nav{display:flex;align-items:center;gap:10px;flex-wrap:wrap;justify-content:flex-end;}
+    /* NAV: que no se corte, que envuelva y quede dentro de pantalla */
+    .nav{
+      display:flex;
+      align-items:center;
+      justify-content:flex-end;
+      gap:10px;
+      flex-wrap:wrap;
+      max-width:520px;
+    }
 
     .btn{
-      display:inline-flex;align-items:center;justify-content:center;gap:10px;
-      height:42px;padding:0 14px;border-radius:14px;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      height:42px;
+      padding:0 14px;
+      border-radius:14px;
       border:1px solid rgba(47,42,36,.12);
       background:rgba(255,255,255,.72);
       box-shadow:0 10px 20px rgba(47,42,36,.08);
-      color:var(--ink);font-weight:700;font-size:14px;
+      color:var(--ink);
+      font-weight:800;
+      font-size:14px;
       transition:transform .12s ease, box-shadow .12s ease, background .12s ease;
-      cursor:pointer;user-select:none;white-space:nowrap;
+      cursor:pointer;
+      user-select:none;
+      white-space:nowrap;
     }
     .btn:hover{transform:translateY(-1px);box-shadow:0 14px 26px rgba(47,42,36,.11);background:rgba(255,255,255,.82);}
     .btn.primary{
@@ -121,10 +164,15 @@
     }
     .btn.ghost{background:rgba(255,255,255,.58);}
 
+    /* Empuja el contenido abajo del header sticky (mejor en iOS con safe area) */
     main{padding:26px 0 80px;}
 
     .hero{
-      display:grid;grid-template-columns:1.1fr .9fr;gap:20px;align-items:stretch;margin-top:8px;
+      display:grid;
+      grid-template-columns:1.1fr .9fr;
+      gap:20px;
+      align-items:stretch;
+      margin-top:8px;
     }
 
     .card{
@@ -147,7 +195,9 @@
     h1{
       margin:0;
       font-family:"Adorable",ui-serif,Georgia,serif;
-      font-size:48px;letter-spacing:.3px;line-height:1.02;
+      font-size:48px;
+      letter-spacing:.3px;
+      line-height:1.06;
     }
 
     .lead{
@@ -172,18 +222,18 @@
       padding:14px;
       min-height:84px;
     }
-    .benefit .t{font-weight:800;font-size:14px;margin-bottom:6px;}
+    .benefit .t{font-weight:900;font-size:14px;margin-bottom:6px;}
     .benefit .d{font-size:13px;color:var(--muted);line-height:1.35;}
 
     .ctaRow{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px;}
 
     .heroRight{
       padding:18px;
-      display:grid;gap:14px;
+      display:grid;
+      gap:14px;
       align-content:start;
       background:var(--card2);
     }
-
     .infoItem{
       padding:14px;border-radius:18px;
       border:1px solid rgba(47,42,36,.10);
@@ -194,7 +244,7 @@
       font-size:12px;color:var(--muted);
       letter-spacing:.2px;margin-bottom:6px;text-transform:uppercase;
     }
-    .infoValue{font-size:15px;line-height:1.35;color:var(--ink);font-weight:800;}
+    .infoValue{font-size:15px;line-height:1.35;color:var(--ink);font-weight:900;}
     .infoValue a{text-decoration:underline;text-underline-offset:3px;}
 
     .section{margin-top:26px;}
@@ -206,12 +256,8 @@
 
     .catalogCard{padding:18px;}
 
-    /* MAS aire entre fotos/cards para que se vea el overlay */
-    .grid{
-      display:grid;
-      grid-template-columns:repeat(3, 1fr);
-      gap:22px; /* aire */
-    }
+    /* Aire extra para ver overlay */
+    .grid{display:grid;grid-template-columns:repeat(3, 1fr);gap:22px;}
 
     .item{
       border-radius:22px;
@@ -221,25 +267,16 @@
       overflow:hidden;
     }
 
-    .ph{
-      border-radius:0;
-      overflow:hidden;
-      background:rgba(255,255,255,.55);
-      aspect-ratio:1 / 1;
-    }
+    .ph{background:rgba(255,255,255,.55);aspect-ratio:1/1;overflow:hidden;}
     .ph img{width:100%;height:100%;object-fit:cover;display:block;transform:scale(1.01);}
 
-    .itemBody{
-      padding:14px 14px 16px;
-      display:grid;
-      gap:10px;
-    }
+    .itemBody{padding:14px 14px 16px;display:grid;gap:10px;}
     .itemTop{display:flex;align-items:flex-start;justify-content:space-between;gap:10px;}
-    .itemTitle{font-weight:900;font-size:14.5px;line-height:1.2;margin:0;}
+    .itemTitle{font-weight:950;font-size:14.5px;line-height:1.2;margin:0;}
     .badge{
       flex:0 0 auto;
       font-size:12px;
-      font-weight:900;
+      font-weight:950;
       padding:6px 10px;
       border-radius:999px;
       border:1px solid rgba(47,42,36,.12);
@@ -247,36 +284,14 @@
       color:rgba(47,42,36,.86);
       white-space:nowrap;
     }
-    .itemDesc{
-      margin:0;
-      color:var(--muted);
-      font-size:13px;
-      line-height:1.35;
-    }
-    .itemMeta{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:10px;
-      padding-top:4px;
-    }
-    .price{
-      font-weight:900;
-      font-size:14px;
-      color:rgba(47,42,36,.92);
-    }
+    .itemDesc{margin:0;color:var(--muted);font-size:13px;line-height:1.35;}
+    .itemMeta{display:flex;align-items:center;justify-content:space-between;gap:10px;padding-top:4px;}
+    .price{font-weight:950;font-size:14px;color:rgba(47,42,36,.92);}
     .btnMini{
-      height:38px;
-      padding:0 12px;
-      border-radius:12px;
-      font-size:13px;
-      font-weight:900;
-      box-shadow:none;
-      background:rgba(255,255,255,.70);
+      height:38px;padding:0 12px;border-radius:12px;
+      font-size:13px;font-weight:950;box-shadow:none;background:rgba(255,255,255,.70);
     }
-    .btnMini.primary{
-      background:linear-gradient(180deg,rgba(255,255,255,.88),rgba(255,241,227,.78));
-    }
+    .btnMini.primary{background:linear-gradient(180deg,rgba(255,255,255,.88),rgba(255,241,227,.78));}
 
     .moreRow{display:flex;justify-content:center;margin-top:18px;}
     .btnMore{height:44px;padding:0 18px;border-radius:999px;}
@@ -293,20 +308,66 @@
     }
     .footRight a{text-decoration:underline;text-underline-offset:3px;}
 
-    /* Responsive */
+    /* Responsive header: que SIEMPRE se lea el Adorable y no se corte, y que botones no queden fuera */
     @media (max-width: 1020px){
       .hero{grid-template-columns:1fr;}
       h1{font-size:42px;}
       .benefits{grid-template-columns:1fr;gap:12px;}
+      .nav{max-width:100%;}
     }
-    @media (max-width: 820px){
-      .grid{grid-template-columns:repeat(2, 1fr);gap:18px;}
+    @media (max-width: 760px){
+      .head{
+        flex-direction:column;
+        align-items:stretch;
+        gap:10px;
+        padding:12px 0 12px;
+        min-height:auto;
+      }
+      .brand{justify-content:flex-start;}
+      .brandText{
+        width:100%;
+        padding:10px 12px;
+      }
+      .brandTitle{
+        font-size:24px;
+        white-space:normal;       /* en mobile: NO elipsis, que se lea */
+        overflow:visible;
+        text-overflow:clip;
+      }
+      .brandSub{
+        white-space:normal;
+        overflow:visible;
+        text-overflow:clip;
+      }
+      .nav{
+        width:100%;
+        justify-content:flex-start;
+        gap:10px;
+      }
+      .btn{
+        height:42px;
+        padding:0 14px;
+        font-size:14px;
+      }
     }
     @media (max-width: 520px){
       .wrap{width:min(var(--max),calc(100% - 22px));}
       h1{font-size:36px;}
-      .brandTitle{font-size:20px;}
       .grid{grid-template-columns:1fr;gap:16px;}
+      .btn{
+        height:44px;             /* mas comodo y evita que se "corte" visualmente */
+        padding:0 14px;
+        border-radius:16px;
+      }
+      /* Botones en 2 columnas para que nunca se salgan de pantalla */
+      .nav .btn{
+        flex:1 1 calc(50% - 10px);
+        min-width:calc(50% - 10px);
+      }
+      .nav .btn.primary{
+        flex:1 1 100%;
+        min-width:100%;
+      }
     }
   </style>
 </head>
@@ -415,10 +476,6 @@
     const PER_LOAD = 3;
     let shown = 0;
 
-    /* IMPORTANTE:
-       Como no tengo el nombre real de cada producto, te lo dejé como "Producto 01, 02..."
-       y con descripciones vendedoras editables. Si querés, reemplazás title/desc/precio/badge por lo real.
-    */
     const CATALOG = [
       { src:"https://iili.io/fyjIFiF.png", title:"Producto 01", badge:"Nuevo", price:"Consultar precio", desc:"Deco artesanal con terminación prolija, ideal para sumar calidez en tu espacio o regalar." },
       { src:"https://iili.io/fyjIqla.png", title:"Producto 02", badge:"Artesanal", price:"Consultar precio", desc:"Pieza decorativa lista para usar. Te paso medidas, colores disponibles y stock por WhatsApp." },
@@ -446,7 +503,7 @@
       return "https://wa.me/" + WA_NUMBER + "?text=" + encodeURIComponent(txt);
     }
 
-    function makeItem(p, idx){
+    function makeItem(p){
       const el = document.createElement("article");
       el.className = "item";
 
@@ -508,7 +565,7 @@
 
     function renderNext(){
       const next = CATALOG.slice(shown, shown + PER_LOAD);
-      next.forEach((p, i) => grid.appendChild(makeItem(p, shown + i)));
+      next.forEach((p) => grid.appendChild(makeItem(p)));
       shown += next.length;
       if (shown >= CATALOG.length) btnMore.style.display = "none";
     }
@@ -518,3 +575,4 @@
   </script>
 </body>
 </html>
+```
