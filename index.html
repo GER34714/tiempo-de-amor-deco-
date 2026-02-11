@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="es-AR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Tiempo de Amor, Deco | Deco artesanal</title>
+  <meta name="description" content="Piezas únicas, artesanales y maravillosas. Proveeduría chic. Consultas por WhatsApp." />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Tiempo de Amor, Deco" />
+  <meta property="og:description" content="Piezas únicas, artesanales y maravillosas. Consultas por WhatsApp." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://iili.io/fyjIFiF.png" />
+  <meta property="og:locale" content="es_AR" />
+
+  <meta name="theme-color" content="#f6efe6" />
+
+  <style>
+    /* IMPORTANTE:
+       - Subí el archivo de fuente "Adorable.otf" en la MISMA carpeta que este index.html
+       - Si lo querés por URL, reemplazá src: url("Adorable.otf") por tu link directo.
+    */
+    @font-face {
+      font-family: "Adorable";
+      src: url("Adorable.otf") format("opentype");
+      font-weight: 400;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    :root{
+      --bg: #fbf6ef;
+      --cream: #fff7ee;
+      --card: rgba(255, 255, 255, 0.78);
+      --card2: rgba(255, 255, 255, 0.68);
+      --ink: #2f2a24;
+      --muted: #6b5f55;
+      --line: rgba(47,42,36,.12);
+      --shadow: 0 14px 34px rgba(47,42,36,.10);
+      --radius: 20px;
+      --radius2: 16px;
+      --max: 1120px;
+    }
+
+    *{ box-sizing: border-box; }
+    html, body { height: 100%; }
+    body{
+      margin: 0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Inter, Arial, "Helvetica Neue", sans-serif;
+      color: var(--ink);
+      background: var(--bg);
+      overflow-x: hidden;
+    }
+
+    /* Overlay de fondo (sin opacidad en la imagen). La opacidad va en las cards. */
+    body::before{
+      content:"";
+      position: fixed;
+      inset: 0;
+      background-image: url("https://iili.io/fyj1ULG.jpg");
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      z-index: -2;
+      transform: translateZ(0);
+    }
+    /* Velo suave para que el overlay no queme, pero SIN tocar la imagen (sigue "sin opacidad") */
+    body::after{
+      content:"";
+      position: fixed;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(251,246,239,.90) 0%, rgba(251,246,239,.70) 45%, rgba(251,246,239,.88) 100%);
+      z-index: -1;
+      pointer-events: none;
+    }
+
+    a{ color: inherit; text-decoration: none; }
+    .wrap{
+      width: min(var(--max), calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    header{
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      backdrop-filter: blur(10px);
+      background: rgba(251,246,239,.62);
+      border-bottom: 1px solid var(--line);
+    }
+    .head{
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 14px 0;
+    }
+
+    .brand{
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-width: 0;
+    }
+    .brandMark{
+      width: 44px;
+      height: 44px;
+      border-radius: 14px;
+      background: radial-gradient(circle at 30% 25%, #fff 0%, #ffe9d6 35%, #f7dccf 70%, #f1d5c6 100%);
+      border: 1px solid rgba(47,42,36,.10);
+      box-shadow: 0 10px 18px rgba(47,42,36,.10);
+      flex: 0 0 auto;
+    }
+    .brandText{
+      display: flex;
+      flex-direction: column;
+      line-height: 1.05;
+      min-width: 0;
+    }
+    .brandTitle{
+      font-family: "Adorable", ui-serif, Georgia, serif;
+      font-size: 22px;
+      letter-spacing: .2px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .brandSub{
+      font-size: 12.5px;
+      color: var(--muted);
+      margin-top: 2px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .nav{
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .btn{
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      height: 42px;
+      padding: 0 14px;
+      border-radius: 14px;
+      border: 1px solid rgba(47,42,36,.12);
+      background: rgba(255,255,255,.72);
+      box-shadow: 0 10px 20px rgba(47,42,36,.08);
+      color: var(--ink);
+      font-weight: 600;
+      font-size: 14px;
+      transition: transform .12s ease, box-shadow .12s ease, background .12s ease;
+      cursor: pointer;
+      user-select: none;
+      white-space: nowrap;
+    }
+    .btn:hover{
+      transform: translateY(-1px);
+      box-shadow: 0 14px 26px rgba(47,42,36,.11);
+      background: rgba(255,255,255,.80);
+    }
+    .btn.primary{
+      background: linear-gradient(180deg, rgba(255,255,255,.82), rgba(255,245,234,.78));
+      border-color: rgba(47,42,36,.14);
+    }
+
+    main{ padding: 26px 0 70px; }
+
+    .hero{
+      display: grid;
+      grid-template-columns: 1.15fr .85fr;
+      gap: 18px;
+      align-items: stretch;
+      margin-top: 8px;
+    }
+
+    .card{
+      border-radius: var(--radius);
+      background: var(--card);
+      border: 1px solid rgba(47,42,36,.12);
+      box-shadow: var(--shadow);
+    }
+
+    .heroLeft{
+      padding: 26px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .tag{
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 7px 12px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.70);
+      border: 1px solid rgba(47,42,36,.10);
+      font-size: 12.5px;
+      color: var(--muted);
+      margin-bottom: 14px;
+    }
+
+    h1{
+      margin: 0;
+      font-family: "Adorable", ui-serif, Georgia, serif;
+      font-size: 46px;
+      letter-spacing: .3px;
+      line-height: 1.02;
+    }
+    .lead{
+      margin: 12px 0 0;
+      color: var(--muted);
+      font-size: 16.5px;
+      line-height: 1.5;
+      max-width: 54ch;
+    }
+
+    .ctaRow{
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 18px;
+    }
+
+    .heroRight{
+      padding: 18px;
+      display: grid;
+      gap: 12px;
+      align-content: start;
+      background: var(--card2);
+    }
+
+    .infoItem{
+      padding: 14px 14px;
+      border-radius: 16px;
+      border: 1px solid rgba(47,42,36,.10);
+      background: rgba(255,255,255,.70);
+    }
+    .infoLabel{
+      font-size: 12px;
+      color: var(--muted);
+      letter-spacing: .2px;
+      margin-bottom: 6px;
+      text-transform: uppercase;
+    }
+    .infoValue{
+      font-size: 15px;
+      line-height: 1.35;
+      color: var(--ink);
+      font-weight: 600;
+    }
+
+    .section{
+      margin-top: 22px;
+    }
+
+    .sectionHead{
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+    .sectionTitle{
+      font-size: 20px;
+      margin: 0;
+      letter-spacing: .2px;
+    }
+    .sectionNote{
+      font-size: 13px;
+      color: var(--muted);
+      margin: 0;
+    }
+
+    .galleryCard{
+      padding: 18px;
+    }
+
+    .grid{
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+    }
+
+    .ph{
+      border-radius: 18px;
+      overflow: hidden;
+      border: 1px solid rgba(47,42,36,.12);
+      background: rgba(255,255,255,.55);
+      box-shadow: 0 10px 20px rgba(47,42,36,.07);
+      aspect-ratio: 1 / 1;
+    }
+    .ph img{
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transform: scale(1.01);
+    }
+
+    .moreRow{
+      display: flex;
+      justify-content: center;
+      margin-top: 14px;
+    }
+    .btnMore{
+      height: 44px;
+      padding: 0 18px;
+      border-radius: 999px;
+    }
+
+    .divider{
+      height: 1px;
+      background: rgba(47,42,36,.12);
+      margin: 18px 0;
+      border-radius: 99px;
+    }
+
+    footer{
+      padding: 20px 0 34px;
+      color: rgba(47,42,36,.75);
+    }
+    .footCard{
+      padding: 16px 18px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+      justify-content: space-between;
+      border-radius: var(--radius);
+      background: rgba(255,255,255,.60);
+      border: 1px solid rgba(47,42,36,.12);
+      box-shadow: 0 10px 20px rgba(47,42,36,.07);
+    }
+    .footLeft{
+      font-size: 13.5px;
+    }
+    .footRight{
+      font-size: 13.5px;
+    }
+    .footRight a{
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    /* Responsive */
+    @media (max-width: 980px){
+      .hero{ grid-template-columns: 1fr; }
+      h1{ font-size: 40px; }
+    }
+    @media (max-width: 740px){
+      .grid{ grid-template-columns: repeat(2, 1fr); }
+      h1{ font-size: 36px; }
+      .head{ padding: 12px 0; }
+      .btn{ height: 40px; font-size: 13.5px; }
+    }
+    @media (max-width: 480px){
+      .wrap{ width: min(var(--max), calc(100% - 22px)); }
+      .grid{ grid-template-columns: 1fr; }
+      h1{ font-size: 34px; }
+      .brandTitle{ font-size: 20px; }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="wrap head">
+      <div class="brand">
+        <div class="brandMark" aria-hidden="true"></div>
+        <div class="brandText">
+          <div class="brandTitle">Tiempo de Amor, Deco</div>
+          <div class="brandSub">Piezas únicas, artesanales y maravillosas</div>
+        </div>
+      </div>
+
+      <nav class="nav">
+        <a class="btn" href="#galeria">Galería</a>
+        <a class="btn primary" href="https://wa.me/542346596684" target="_blank" rel="noopener">WhatsApp</a>
+        <!-- Si querés el IG directo, reemplazá el href por el link del perfil -->
+        <a class="btn" href="#" onclick="alert('Pega el link de Instagram en el href cuando lo tengas.'); return false;">Instagram</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="hero">
+      <div class="card heroLeft">
+        <div class="tag">Deco artesanal · Proveeduría chic</div>
+        <h1>Tiempo de Amor, Deco</h1>
+        <p class="lead">
+          Cada pieza está hecha con dedicación, detalle y estilo.
+          Si querés consultar por un producto o pedir presupuesto, escribime por WhatsApp.
+        </p>
+
+        <div class="ctaRow">
+          <a class="btn primary" href="#galeria">Ver galería</a>
+          <a class="btn" href="https://wa.me/542346596684" target="_blank" rel="noopener">Consultar por WhatsApp</a>
+        </div>
+
+        <div class="divider"></div>
+
+        <p class="sectionNote" style="margin:0;">
+          Tip: La galería carga de a 3 y con “Ver más” vas mostrando el resto (más liviano y rápido).
+        </p>
+      </div>
+
+      <aside class="card heroRight">
+        <div class="infoItem">
+          <div class="infoLabel">Atención</div>
+          <div class="infoValue">Online · Consultas por WhatsApp</div>
+        </div>
+        <div class="infoItem">
+          <div class="infoLabel">Estilo</div>
+          <div class="infoValue">Pasteles, cremitas, aireado (overlay visible)</div>
+        </div>
+        <div class="infoItem">
+          <div class="infoLabel">Contacto</div>
+          <div class="infoValue"><a href="https://wa.me/542346596684" target="_blank" rel="noopener" style="text-decoration: underline; text-underline-offset: 3px;">wa.me/542346596684</a></div>
+        </div>
+      </aside>
+    </section>
+
+    <section id="galeria" class="section">
+      <div class="sectionHead">
+        <h2 class="sectionTitle">Galería</h2>
+        <p class="sectionNote">Se muestran de a 3 · tocá “Ver más” para cargar el resto</p>
+      </div>
+
+      <div class="card galleryCard">
+        <div id="grid" class="grid" aria-live="polite"></div>
+        <div class="moreRow">
+          <button id="btnMore" class="btn btnMore" type="button">Ver más</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="wrap">
+    <div class="footCard">
+      <div class="footLeft">© <span id="y"></span> Tiempo de Amor, Deco</div>
+      <div class="footRight">
+        <a href="https://ciborg347.onrender.com" target="_blank" rel="noopener">Creado y diseñado por Ciborg 347</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Galería: muestra de a 3, con botón "Ver más" (carga progresiva)
+    const IMAGES = [
+      "https://iili.io/fyjIFiF.png",
+      "https://iili.io/fyjIqla.png",
+      "https://iili.io/fyjIfKg.png",
+      "https://iili.io/fyjIBUJ.png",
+      "https://iili.io/fyjIxNp.png",
+      "https://iili.io/fyjIzDN.png",
+      "https://iili.io/fyjITxI.png",
+      "https://iili.io/fyjIuVt.png",
+      "https://iili.io/fyjI5fn.png",
+      "https://iili.io/fyjI7ls.png",
+      "https://iili.io/fyjIYUG.png",
+      "https://iili.io/fyjIcJf.png",
+      "https://iili.io/fyjI0Ol.png",
+      "https://iili.io/fyjI1b2.png",
+      "https://iili.io/fyjIGxS.png"
+    ];
+
+    const PER_LOAD = 3;
+    let shown = 0;
+
+    const grid = document.getElementById("grid");
+    const btnMore = document.getElementById("btnMore");
+    document.getElementById("y").textContent = new Date().getFullYear();
+
+    function renderNext(){
+      const next = IMAGES.slice(shown, shown + PER_LOAD);
+      next.forEach((src, idx) => {
+        const wrap = document.createElement("div");
+        wrap.className = "ph";
+        const img = document.createElement("img");
+        img.loading = "lazy";
+        img.alt = "Foto " + (shown + idx + 1);
+        img.src = src;
+        wrap.appendChild(img);
+        grid.appendChild(wrap);
+      });
+
+      shown += next.length;
+
+      if (shown >= IMAGES.length){
+        btnMore.style.display = "none";
+      }
+    }
+
+    btnMore.addEventListener("click", renderNext);
+
+    // Inicial
+    renderNext();
+  </script>
+</body>
+</html>
